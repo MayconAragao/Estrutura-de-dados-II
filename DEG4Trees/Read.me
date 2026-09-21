@@ -1,1 +1,62 @@
+# 🧩 Jogo Didático: DEG4Trees 2.0 (Árvores Rubro-Negras)
 
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen.svg)]()
+
+Projeto desenvolvido para a disciplina de **Estruturas de Dados II**, do curso de **Ciência da Computação**.
+
+O projeto consiste em um **jogo educativo de simulação industrial no terminal**, desenvolvido em Python, com o objetivo de ensinar as regras de balanceamento e manutenção de **Árvores Rubro-Negras (Red-Black Trees)** por meio da participação ativa do estudante durante o processo de inserção de chaves e correção de propriedades.
+
+---
+
+## 🎯 Objetivo
+
+O objetivo do projeto é transformar o estudo das Árvores Rubro-Negras em uma atividade prática e desafiadora. O jogador assume o papel de operador de uma linha de montagem industrial e precisa identificar e solucionar os conflitos de cor (dupla violação de nós vermelhos) que ocorrem ao inserir novos pacotes de dados na árvore.
+
+Dessa forma, o estudante vivencia a relação de causa e efeito das operações de **recolorização** (Pistão Térmico) e **rotação** (Braço Mecânico), recebendo feedback imediato sobre suas escolhas para evitar a degradação algorítmica da estrutura.
+
+---
+
+## 📚 Contexto do Projeto
+
+O projeto foi desenvolvido a partir do reuso e engenharia reversa do modelo existente denominado **DEG4Trees (Digital Educational Game "Four" Trees)**. O jogo original abordava o ensino de Árvores Binárias de Busca (ABB) e Árvores AVL situadas em um cenário aquático/submarino.
+
+Durante a análise crítica do modelo original, o grupo identificou três limitações principais:
+1. **Fragmentação Pedagógica:** As operações de inserção e rebalanceamento ocorriam em minijogos separados (submarino e garçom), impedindo a aprendizagem da causa e efeito em tempo real.
+2. **Gargalo de UX:** A interface do modo AVL apresentou baixa avaliação de atratividade e clareza visual entre os estudantes (nota 5,75).
+3. **Escopo Limitado:** O jogo original não contemplava estruturas avançadas de ED II, como as **Árvores Rubro-Negras**.
+
+Como o código-fonte original do DEG4Trees não é aberto, foi desenvolvida uma nova engine diretamente em Python com foco no terminal, mapeando os conceitos rigorosos de ED II para o universo industrial da fábrica.
+
+---
+
+## ⚙️ Funcionamento
+
+O jogo simula uma esteira industrial onde pacotes numerados chegam de forma sequencial. O jogador deve coordenar o processo de inserção e restabelecimento das propriedades de balanceamento:
+
+### 1. Inserção de Pacotes (BST)
+* Cada pacote que chega da esteira entra na estrutura como um nó **VERMELHO**.
+* O nó é posicionado no local correto seguindo as regras da Árvore Binária de Busca.
+* Se o pai do novo nó for **PRETO**, não há violação e a partida prossegue.
+
+### 2. Tratamento de Conflito (Propriedade Red-Black)
+Se o pai do novo nó for **VERMELHO**, ocorre um conflito (dois nós vermelhos consecutivos). O jogador deve analisar a cor do **nó tio** e acionar o mecanismo correto:
+
+* **Se o Tio for VERMELHO:** O jogador deve acionar o **Pistão Térmico (Recolorização)**. O pai e o tio passam a ser PRETOS, e o avô passa a ser VERMELHO.
+* **Se o Tio for PRETO:** O jogador deve acionar o **Braço Mecânico (Rotação)**. Conforme o alinhamento dos nós (esquerda/direita), são executadas Rotações Simples ou Duplas no pai e no avô para reestruturar os ponteiros.
+
+---
+
+## 🕹️ Mecânica e Regras do Jogo
+
+O jogo exige que o jogador avalie visualmente a árvore gerada e decida o tipo de manutenção:
+
+```text
+Novo pacote recebido da esteira: [ 15 ] (Cor: VERMELHO)
+Violação detectada: Conflito Vermelho-Vermelho no nó 15 e pai 20!
+
+Escolha a ferramenta de manutenção:
+[1] Pistão Térmico (Recolorir - Tio Vermelho)
+[2] Braço Mecânico (Rotacionar - Tio Preto)
+> 1
