@@ -85,7 +85,7 @@ Opção: 1
 
 Integrante:
 -Maycon Fidelis Aragão
--Beatriz Alves de  Sousa
--Ítalo George da Costa Diniz
--Caio Guilherme Batista
+-Beatriz Alves de  Sousa - https://github.com/trizalvs-sudo
+-Ítalo George da Costa Diniz - https://github.com/Diniz018/Estrutura_de_Dados2_UDF_2026
+-Caio Guilherme Batista - https://github.com/caioguilhermebatista/EstruturadeDados2
 
